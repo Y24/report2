@@ -7,3 +7,7 @@ baseClock::baseClock()
 QDateTime& baseClock::getTime(){
     return currentDateTime;
 }
+void baseClock::increaseOneSecond(){
+    currentDateTime=currentDateTime.addSecs(1);
+
+}

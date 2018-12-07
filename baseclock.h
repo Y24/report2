@@ -10,10 +10,7 @@ private:
 public:
     baseClock();
     QDateTime& getTime() ;
-    void increaseOneSecond(){
-        currentDateTime=currentDateTime.addSecs(1);
-
-    }
+    void increaseOneSecond();
 };
 
 #endif // BASECLOCK_H

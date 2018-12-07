@@ -27,14 +27,9 @@ QPointF calculatePoint(const QPointF & center,flag f,double number,int lineLengt
     re.setY(center.y()-lineLength*cos(rad));
     return re;
 }
-void clock::paintEvent(QPaintEvent*){
-     QPainter painter(this);
-    const int clockCenterX=800;
-    const int clockCenterY=300;
-    const int clockR=200;
+void clock::Paint(QPainter& painter,int clockCenterX,int clockCenterY,int clockR){
      QPointF clockCenter(clockCenterX,clockCenterY);
      QPointF TextStart(clockCenterX-clockR+60,clockCenterY+clockR+50);
-     painter.drawEllipse(clockCenter,clockR,clockR);
      painter.drawText(TextStart,getTime().toString());
      painter.drawText(QPointF(clockCenterX+clockR-20,clockCenterY+10),QString::number(3));
      painter.drawText(QPointF(clockCenterX-5,clockCenterY+clockR-10),QString::number(6));
@@ -65,7 +60,13 @@ void clock::paintEvent(QPaintEvent*){
       painter.drawLine(QLineF(clockCenter,calculatePoint(clockCenter,SECOND,second,clockR-10)));
       painter.restore();
 }
-
+void clock::paintEvent(QPaintEvent*){
+     QPainter painter(this);
+     Paint(painter,400,300,200);
+     Paint(painter,1000,300,200);
+     painter.drawRect(400-200,300-200,2*200,2*200);
+     painter.drawEllipse(1000-200,300-200,2*200,2*200);
+}
 clock::~clock()
 {
     delete Timer;

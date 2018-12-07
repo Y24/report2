@@ -21,6 +21,7 @@ public:
     explicit clock(QWidget *parent = nullptr);
     ~clock();
     void paintEvent(QPaintEvent*);
+    void Paint(QPainter&,int,int,int);
 signals:
 private slots:
     void increaseByseconds();
